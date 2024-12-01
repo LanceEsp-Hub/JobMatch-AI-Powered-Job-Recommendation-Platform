@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: Arial, sans-serif;
+        }
+
+        .container-box {
+            background-color: rgba(255, 255, 255, 0.9);
+            border-radius: 15px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+            max-width: 800px;
+            padding: 30px;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
+            position: relative;
+        }
+
+        .container-box::before,
+        .container-box::after {
+            content: '';
+            position: absolute;
+            width: 150px;
+            height: 150px;
+            background: rgba(106, 17, 203, 0.3);
+            border-radius: 50%;
+            z-index: -1;
+        }
+
+        .container-box::before {
+            top: -50px;
+            right: -50px;
+        }
+
+        .container-box::after {
+            bottom: -50px;
+            left: -50px;
+        }
+
+        .column {
+            width: 45%;
+            text-align: center;
+        }
+
+        .column h2 {
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        .btn {
+            width: 100%;
+            padding: 12px;
+            font-size: 1rem;
+            border-radius: 30px;
+            transition: all 0.3s ease;
+        }
+
+        .btn-primary {
+            background: #2575fc;
+            border: none;
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: #1a5cc9;
+            transform: scale(1.05);
+        }
+
+        .btn-secondary {
+            background: #6a11cb;
+            border: none;
+            color: white;
+        }
+
+        .btn-secondary:hover {
+            background: #540da3;
+            transform: scale(1.05);
+        }
+
+        .form-control {
+            border-radius: 25px;
+            padding: 10px 15px;
+        }
+
+        .form-control:focus {
+            border-color: #6a11cb;
+            box-shadow: 0 0 10px rgba(106, 17, 203, 0.2);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container-box">
+        <div class="column">
+            <h2>Job Recommendation System</h2>
+            <a href="{% url 'upload_resume' %}" class="btn btn-primary">Go to System</a>
+        </div>
+        <div class="column">
+            <h2>Admin Login</h2>
+            <form method="POST">
+                {% csrf_token %}
+                <div class="mb-3">
+                    <input type="text" class="form-control" id="username" name="username" placeholder="Username" required>
+                </div>
+                <div class="mb-3">
+                    <input type="password" class="form-control" id="password" name="password" placeholder="Password" required>
+                </div>
+                <button type="submit" class="btn btn-secondary">Login</button>
+            </form>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>
